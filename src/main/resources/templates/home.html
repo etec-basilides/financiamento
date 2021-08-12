@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="widthdevice-width" />
+<title>Home</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+	<style>
+
+a {
+	color:rgb(255, 255, 255);	
+	border-radius: 15px;
+	background: #36b8ff;
+	padding: 10px 20px;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+a:hover {
+	text-decoration:none;
+	color:rgb(255, 255, 255);
+}
+
+a:visited {
+	color:rgb(255, 255, 255);
+}
+
+
+</style>
+</head>
+<body>
+	<div class="panel panel-default" style="margin:10px">
+		<div class="jumbotron">
+			<h3> Intenções de Financiamento</h3>
+			</div>
+		<div style="padding: 5px">
+				<a href="/NovaIntent">Nova Intenção</a>
+		</div>
+		<div class="panel-body" style="padding-top: 15px">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cliente</th>
+						<th>Tipo de Financiamento</th>
+						<th>Valor da intenção</th>
+						<th>Quantidade parcelamento</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="intencao : ${intent}">
+						<td th:text="${intencao.cliente}">
+						<td th:text="${intencao.categoria}">
+						<td th:text="${intencao.valor}">
+						<td th:text="${intencao.qtde_parcelamento}">
+						
+						<td>
+							<a th:href="@{/detalhar/{id}(id = ${intencao.id})}" >Detalhar</a>
+						</td>
+						<td>
+        					<a th:href="@{/excluir/{id}(id = ${intencao.id})}" class="btn btn-danger">Excluir</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

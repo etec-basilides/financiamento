@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Lista de Alunos</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet"/>	
+<style>
+
+a {
+	border: none;
+	color: white;
+	border-radius: 5px;
+	background: #36b8ff;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	float: right;
+}
+
+a:hover {
+	text-decoration:none;
+	color:white;
+}
+
+a:visited {
+	color:white;
+}
+
+</style>
+</head>
+<body>
+	<div class="container" style="border: 1px solid; padding:30px;">
+		<div class="jumbotron">
+			<h3>Intenção de Financiamento</h3>
+		</div>
+
+		<form th:action="@{/salvar}" method="post" th:object="${intent}">
+			<input type="hidden" th:field="*{id}">
+
+			<div class="form-row">
+				<div class="form-group">
+					<label>Cliente</label> <input type="text" class="form-control" th:field="*{cliente}"
+						name="cliente" id="cliente" placeholder="Nome do cliente" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="inputAddress">Endereço</label> <input type="text" class="form-control" th:field="*{endereco}"
+						 name="endereco" id="endereco" required>
+				</div>
+				<div class="form-group col-md-1">
+					<label>Nº</label> <input type="number" class="form-control" th:field="*{numero}"
+						name="numero" required>
+				</div>
+				<div class="form-group col-md-3">
+					<label>Cidade</label> <input type="text" class="form-control" th:field="*{cidade}"
+						name="cidade" id="cidade" required>
+				</div>
+				<div class="form-group col-md-2">
+					<label>Estado</label> <select name="estado" th:field="*{estado}" 
+					id="estado" required>
+						<option value="SP">SP</option>
+						<option value="RJ">RJ</option>
+						<option value="MG">MG</option>
+						<option value="BA">BA</option>
+						<option value="RS">RS</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<label>CEP</label> <input type="text" class="form-control" th:field="*{cep}"
+						name="cep" id="cep" placeholder="00000-000" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label>CPF</label> <input type="text" class="form-control" th:field="*{cpf}"
+						name="cpf" id="cpf" required>
+				</div>
+				<div class="form-group col-md-3">
+					<label>RG</label> <input type="text" class="form-control" name="rg" th:field="*{rg}"
+						id="rg" required>
+				</div>
+				<div class="form-group col-md-3">
+					<label>Data de Nascimento</label> <input type="date" th:field="*{data_nasc}"
+						class="form-control" name="data_nasc" id="data_nasc" required>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<label>Email</label> <input type="email" class="form-control" th:field="*{email}"
+						name="email" id="email" required>
+				</div>
+				<div class="form-group col-md-3">
+					<label>Telefone Residencial</label> <input type="text" th:field="*{telefone}"
+						class="form-control" name="telefone" id="telefone" required>
+				</div>
+				<div class="form-group col-md-3">
+					<label>Celular</label> <input type="text" class="form-control" th:field="*{celular}"
+						name="celular" id="celular" required>
+				</div>
+			</div>
+
+			<div class="form-row" style="padding-top: 15px">
+				<div class="form-group col-md-4">
+					<label>Tipo Financiamento</label> <select name="categoria" th:field="*{categoria}"
+						id="categoria" required>
+						<option value="auto">Auto</option>
+						<option value="imobiliario">Imobiliário</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<label>Quantidade Parcelamento</label> <input type="text" th:field="*{qtde_parcelamento}"
+						class="form-control" name="qtde_parcelamento"
+						id="qtde_parcelamento" required>
+				</div>
+				<div class="form-group col-md-2">
+					<label>Valor intenção</label> <input type="text" th:field="*{valor}"
+						class="form-control" name="valor" id="valor" placeholder="R$"
+						required>
+				</div>
+				<div class="form-group col-md-2">
+					<label>Salário</label> <input type="text" class="form-control" th:field="*{salario}"
+						name="salario" id="salario" placeholder="R$" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="submit">Salvar</button>
+			</div>
+		</form>	
+
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}">
+			
+		</script>
+	</div>
+</body>
+</html>
